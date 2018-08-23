@@ -21,8 +21,7 @@ class ClientTransformer extends TransformerAbstract
             'county' => $client->getCounty(),
             'city' => $client->getCity(),
             'postcode' => $client->getPostcode(),
-            'country' => $client->getCountry(),
-            'country_name' => $client->getCountry()
+            'country' => $client->getCountry()
         ];
     }
 }

@@ -9,11 +9,8 @@ use Illuminate\Support\Collection;
  */
 class ClientType
 {
-    const TYPE_CLIENTS = 1;
-    const TYPE_CARRIERS = 2;
-    const TYPE_FACTORIES = 3;
-    const TYPE_SUPPLIERS = 4;
-    const TYPE_LOCATIONS = 5;
+    const TYPE_1 = 1;
+    const TYPE_2 = 2;
 
     /**
      * Check type of client

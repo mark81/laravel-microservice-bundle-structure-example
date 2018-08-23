@@ -1,0 +1,256 @@
+{
+    "ListClientEndPoint": {
+        "get": {
+            "description": "Get list of clients",
+            "summary": "List clients",
+            "tags": [
+                "Clients"
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success",
+                    "schema": {
+                        "$ref": "#/ClientsListSuccessResponse"
+                    }
+                },
+                "400": {
+                    "description": "Error",
+                    "schema": {
+                        "$ref": "definitions.json#/Error"
+                    }
+                }
+            }
+        },
+        "post": {
+            "operationId": "createClient",
+            "description": "Create new client",
+            "summary": "Create client",
+            "parameters": [{
+                "name": "body",
+                "in": "body",
+                "required": true,
+                "description": "client object",
+                "schema": {
+                    "$ref": "#/NewClient"
+                }
+            }],
+            "tags": [
+                "Clients"
+            ],
+            "responses": {
+                "201": {
+                    "description": "Success",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                                "$ref": "#/Client"
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Error",
+                    "schema": {
+                        "$ref": "definitions.json#/Error"
+                    }
+                }
+            }
+        }
+    },
+    "SingleClientEndPoint": {
+        "get": {
+            "description": "Retrieve detailed information about client",
+            "summary": "Get client",
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "description": "client id",
+                "required": true,
+                "type": "number",
+                "format": "integer"
+            }],
+            "tags": [
+                "Clients"
+            ],
+            "responses": {
+                "200": {
+                    "description": "client object",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                                "$ref": "#/Client"
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Error",
+                    "schema": {
+                        "$ref": "definitions.json#/Error"
+                    }
+                }
+            }
+        },
+        "put": {
+            "operationId": "updateClient",
+            "description": "Update client attributes",
+            "summary": "Update client",
+            "parameters": [{
+                "name": "id",
+                "in": "path",
+                "description": "client id",
+                "required": true,
+                "type": "number",
+                "format": "integer"
+            }, {
+                "name": "body",
+                "in": "body",
+                "description": "client object",
+                "required": true,
+                "schema": {
+                    "$ref": "#/NewClient"
+                }
+            }],
+            "tags": [
+                "Clients"
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                                "$ref": "#/Client"
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Error",
+                    "schema": {
+                        "$ref": "definitions.json#/Error"
+                    }
+                }
+            }
+        }
+    },
+    "SingleClientSuccessResponse": {
+        "type": "object",
+        "properties": {
+            "data": {
+                "$ref": "#/Client"
+            }
+        }
+    },
+    "Client": {
+        "type": ["object", "array"],
+        "properties": {
+            "name": {
+                "type": "string",
+                "description": "name"
+            },
+            "description": {
+                "type": ["string","null"],
+                "description": "description"
+            },
+            "address": {
+                "type": ["string","null"],
+                "description": "address"
+            },
+            "street": {
+                "type": ["string","null"],
+                "description": "street"
+            },
+            "town": {
+                "type": ["string","null"],
+                "description": "town"
+            },
+            "county": {
+                "type": ["string","null"],
+                "description": "county"
+            },
+            "country": {
+                "type": ["string","null"],
+                "description": "country code"
+            },
+            "country_name": {
+                "type": ["string","null"],
+                "description": "country name"
+            },
+            "post_code": {
+                "type": ["string","null"],
+                "description": "post_code"
+            },
+            "telephone": {
+                "type": ["string","null"],
+                "description": "telephone"
+            },
+            "email": {
+                "type": ["string","null"],
+                "description": "email"
+            }
+        }
+    },
+    "NewClient": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string",
+                "description": "name"
+            },
+            "description": {
+                "type": "string",
+                "description": "description"
+            },
+            "address": {
+                "type": "string",
+                "description": "address"
+            },
+            "street": {
+                "type": "string",
+                "description": "street"
+            },
+            "town": {
+                "type": "string",
+                "description": "town"
+            },
+            "county": {
+                "type": "string",
+                "description": "county"
+            },
+            "country": {
+                "type": "string",
+                "description": "country code"
+            },
+            "post_code": {
+                "type": "string",
+                "description": "post_code"
+            },
+            "telephone": {
+                "type": "string",
+                "description": "telephone"
+            },
+            "email": {
+                "type": "string",
+                "description": "email"
+            }
+        }
+    },
+    "ClientsListSuccessResponse": {
+        "type": "object",
+        "properties": {
+            "meta": {
+                "$ref": "definitions.json#/Meta"
+            },
+            "data": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/Client"
+                }
+            }
+        }
+    }
+}

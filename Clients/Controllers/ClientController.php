@@ -10,7 +10,6 @@ use App\Http\Controllers\ApiController;
 use App\Clients\Transformers\ClientTransformer;
 use App\Clients\Contracts\Repositories\ClientRepositoryInterface;
 use App\Repositories\SortingFactory;
-use App\Clients\Criteria\ByTypeId;
 use App\Clients\Services\ClientService;
 
 class ClientController extends ApiController
@@ -43,11 +42,6 @@ class ClientController extends ApiController
     {
         $page = $this->request->get('page', 0);
         $perPage = $this->request->get('limit', 10);
-
-        if ($this->request->has('type_id')) {
-            $typeId = $this->request->get('type_id');
-            $this->repository->addCriterion(new ByTypeId($typeId));
-        }
 
         if ($this->request->has('sorting')) {
             $factory = new SortingFactory();
